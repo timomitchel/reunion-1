@@ -17,12 +17,6 @@ class Reunion
     end.sum
   end
 
-  def total_owed
-    activity_1_amounts.merge(activity_2_amounts) do |key, first_val, second_val|
-      first_val + second_val
-    end
-  end
-
   def activity_1_amounts
     activity_totals[0]
   end
@@ -34,6 +28,18 @@ class Reunion
   def activity_totals
     @activities.map do |activity|
       activity.amount_owed
+    end
+  end
+
+  def total_owed
+    activity_1_amounts.merge(activity_2_amounts) do |key, first_val, second_val|
+      first_val + second_val
+    end
+  end
+
+  def print_owed
+    total_owed.each do |key, value|
+      puts "#{key} owes #{value} dollars"
     end
   end
 end
