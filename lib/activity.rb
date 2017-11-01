@@ -20,4 +20,11 @@ class Activity
   def split_cost
     total_cost / @participants.values.length
   end
+
+  def amount_owed
+    @participants.keys.reduce({}) do |hash, name|
+      hash.store(name, split_cost - @participants[name])
+      hash
+    end
+  end
 end
