@@ -16,4 +16,18 @@ class Reunion
       activity.total_cost
     end.sum
   end
+
+  def total_owed
+    h_1 = activity_totals[0]
+    h_2 = activity_totals[1]
+    h_1.merge(h_2) do |key, first_value, second_value|
+      first_value + second_value
+    end
+  end
+
+  def activity_totals
+    @activities.map do |activity|
+      activity.amount_owed
+    end
+  end
 end

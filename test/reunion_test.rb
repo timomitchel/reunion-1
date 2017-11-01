@@ -46,4 +46,21 @@ class ReunionTest < Minitest::Test
 
     assert_equal 30, reunion.total_cost
   end
+
+  def test_total_owed
+    reunion = Reunion.new('house')
+    activity_1 = Activity.new('hike')
+    activity_1.add_participant('Timo', 5)
+    activity_1.add_participant( 'Katy', 10)
+    activity_1.add_participant('Erika', 0)
+    activity_2 = Activity.new('hang')
+    activity_2.add_participant('Timo', 5)
+    activity_2.add_participant( 'Katy', 10)
+    activity_2.add_participant('Erika', 0)
+
+    reunion.add_activity(activity_1)
+    reunion.add_activity(activity_2)
+
+    assert_equal ({"Timo"=>0, "Katy"=>-10, "Erika"=>10}), reunion.total_owed
+  end
 end
