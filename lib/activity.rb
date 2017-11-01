@@ -22,9 +22,9 @@ class Activity
   end
 
   def amount_owed
-    @participants.keys.reduce({}) do |hash, name|
-      hash.store(name, split_cost - @participants[name])
-      hash
+    @participants.keys.reduce({}) do |result, name|
+      result.store(name, split_cost - @participants[name])
+      result
     end
   end
 end
