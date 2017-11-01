@@ -13,5 +13,8 @@ class Activity
     @participants.store(name, amount)
   end
 
+  def total_cost
+    @participants.values.sum
+  end
 
 end
