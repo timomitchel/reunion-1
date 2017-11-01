@@ -11,4 +11,9 @@ class Reunion
     @activities << activity
   end
 
+  def total_cost
+    @activities.map do |activity|
+      activity.total_cost
+    end.sum
+  end
 end
