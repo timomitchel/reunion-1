@@ -1,3 +1,5 @@
+require "pry"
+
 class Activity
 
   attr_reader :name, :participants
@@ -7,9 +9,9 @@ class Activity
     @participants = Hash.new
   end
 
-  def add_participant(participant)
-    participant.each do |key, value|
-      @participants[key] = value
-    end
+  def add_participant(name, amount)
+    @participants.store(name, amount)
   end
+
+
 end
