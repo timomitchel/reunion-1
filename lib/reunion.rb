@@ -18,11 +18,17 @@ class Reunion
   end
 
   def total_owed
-    h_1 = activity_totals[0]
-    h_2 = activity_totals[1]
-    h_1.merge(h_2) do |key, first_value, second_value|
-      first_value + second_value
+    activity_1_amounts.merge(activity_2_amounts) do |key, first_val, second_val|
+      first_val + second_val
     end
+  end
+
+  def activity_1_amounts
+    activity_totals[0]
+  end
+
+  def activity_2_amounts
+    activity_totals[1]
   end
 
   def activity_totals
